@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agence d'Architecture</title>
+    <!-- Tailwind CSS CDN pour un design responsive et moderne -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Police Montserrat pour correspondre au logo */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        .nav-link.active {
+            font-weight: 600;
+            border-bottom: 2px solid #000;
+        }
+        /* Style pour la carte Leaflet */
+        #map-container {
+            height: 600px;
+            width: 100%;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+        }
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+    <!-- CSS Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Barre de navigation - Reste visible sur toutes les pages -->
+    <nav class="sticky top-0 z-50 bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-center space-x-8 md:space-x-12">
+            <a href="#home" data-page="home" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
+            <a href="#portfolio" data-page="portfolio" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
+            <a href="#map-projects" data-page="map-projects" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Carte des projets</a>
+            <a href="#about" data-page="about" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
+            <a href="#contact" data-page="contact" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- Section de la page d'accueil avec le logo -->
+        <section id="home" data-page="home" class="page-section flex items-center justify-center min-h-screen">
+            <div class="text-center p-8">
+                <!-- Ajout du logo -->
+                <img src="/uploaded:4b4cfe91c2fa80e2d92e52c7af25dc031abae163.jpg-8f38eefb-0688-4f43-a425-e673e1f89a5f" alt="Logo de l'agence Alter Ego" class="mx-auto w-64 md:w-80 mb-6">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
+                    Alter Ego
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl text-gray-600 font-light">
+                    ATELIER D'ARCHITECTURE
+                </p>
+            </div>
+        </section>
+
+        <!-- Section de la page des projets (portfolio) -->
+        <section id="portfolio" data-page="portfolio" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nos Projets</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Projet 1 -->
+                    <a href="#project-1" data-page="project-1" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/800x800/6b7280/ffffff?text=Projet+1" alt="Image du Projet 1" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold mt-2">Maison O'Connor</h3>
+                                <p class="text-sm font-light mt-1">Résidence privée</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Projet 2 -->
+                    <a href="#project-2" data-page="project-2" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/800x800/9ca3af/ffffff?text=Projet+2" alt="Image du Projet 2" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold mt-2">Bureaux XYZ</h3>
+                                <p class="text-sm font-light mt-1">Espace commercial</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Projet 3 -->
+                    <a href="#project-3" data-page="project-3" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/800x800/4b5563/ffffff?text=Projet+3" alt="Image du Projet 3" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold mt-2">Musée de l'art moderne</h3>
+                                <p class="text-sm font-light mt-1">Bâtiment public</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Ajoute d'autres projets ici si nécessaire -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Nouvelle section pour la carte des projets -->
+        <section id="map-projects" data-page="map-projects" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Carte de nos Projets</h2>
+                <!-- Le conteneur de la carte -->
+                <div id="map-container"></div>
+            </div>
+        </section>
+        
+        <!-- Section pour la page détaillée du Projet 1 -->
+        <section id="project-1" data-page="project-1" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+            <div class="container mx-auto max-w-4xl">
+                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Maison O'Connor</h2>
+                <p class="text-gray-500 mb-8">Résidence privée | 2023 | 250 m²</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <img src="https://placehold.co/1200x800/6b7280/ffffff?text=Vue+Extérieure" alt="Vue extérieure de la Maison O'Connor" class="w-full rounded-xl shadow-lg">
+                    <img src="https://placehold.co/1200x800/9ca3af/ffffff?text=Vue+Intérieure" alt="Vue intérieure de la Maison O'Connor" class="w-full rounded-xl shadow-lg">
+                </div>
+                <div class="mt-8 prose max-w-none text-gray-700">
+                    <p>La Maison O'Connor est un projet de résidence privée situé dans la campagne. L'objectif était de créer un espace de vie qui se fond dans l'environnement naturel tout en offrant des intérieurs modernes et lumineux. Nous avons utilisé des matériaux locaux comme le bois et la pierre pour l'extérieur, tandis que l'intérieur est caractérisé par de grandes ouvertures et une palette de couleurs minimaliste.</p>
+                    <p>Le design a été centré sur la durabilité et l'efficacité énergétique, intégrant des panneaux solaires et un système de récupération de l'eau de pluie. Chaque pièce est conçue pour maximiser la lumière naturelle et offrir des vues imprenables sur le paysage environnant.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section pour la page détaillée du Projet 2 -->
+        <section id="project-2" data-page="project-2" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+            <div class="container mx-auto max-w-4xl">
+                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Bureaux XYZ</h2>
+                <p class="text-gray-500 mb-8">Espace commercial | 2022 | 1200 m²</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <img src="https://placehold.co/1200x800/9ca3af/ffffff?text=Vue+Extérieure" alt="Vue extérieure des bureaux XYZ" class="w-full rounded-xl shadow-lg">
+                    <img src="https://placehold.co/1200x800/6b7280/ffffff?text=Espace+de+travail" alt="Espace de travail des bureaux XYZ" class="w-full rounded-xl shadow-lg">
+                </div>
+                <div class="mt-8 prose max-w-none text-gray-700">
+                    <p>Les bureaux XYZ ont été conçus pour une startup technologique. Le projet visait à créer un environnement de travail flexible et collaboratif qui encourage la créativité et le bien-être des employés. Nous avons opté pour un design industriel moderne avec des touches de couleurs vives.</p>
+                    <p>Les espaces ouverts sont complétés par des zones de calme et des salles de réunion insonorisées. L'éclairage a été soigneusement étudié pour réduire la fatigue oculaire, et la présence de nombreuses plantes vertes contribue à une atmosphère saine et apaisante.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section pour la page détaillée du Projet 3 -->
+        <section id="project-3" data-page="project-3" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+            <div class="container mx-auto max-w-4xl">
+                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Musée de l'art moderne</h2>
+                <p class="text-gray-500 mb-8">Bâtiment public | 2021 | 5000 m²</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <img src="https://placehold.co/1200x800/4b5563/ffffff?text=Façade" alt="Façade du musée de l'art moderne" class="w-full rounded-xl shadow-lg">
+                    <img src="https://placehold.co/1200x800/6b7280/ffffff?text=Galerie" alt="Galerie d'exposition du musée" class="w-full rounded-xl shadow-lg">
+                </div>
+                <div class="mt-8 prose max-w-none text-gray-700">
+                    <p>La conception du Musée de l'art moderne est une exploration de la lumière et de l'espace. Le bâtiment, avec sa façade en verre et en béton, est une œuvre d'art en soi, conçue pour dialoguer avec les œuvres qu'il abrite. Les espaces d'exposition ont des hauteurs de plafond variables pour s'adapter à différents types d'œuvres, et la lumière naturelle est filtrée pour ne pas endommager les pièces exposées.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section de la page de présentation -->
+        <section id="about" data-page="about" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+            <div class="container mx-auto max-w-4xl text-gray-700">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">À Propos de l'Agence</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    Fondée en [Année de fondation], notre agence d'architecture s'engage à créer des espaces qui allient esthétisme, fonctionnalité et durabilité. Nous croyons que chaque projet est une histoire unique, et nous travaillons en étroite collaboration avec nos clients pour transformer leurs visions en réalités architecturales. Notre démarche se concentre sur l'innovation, le respect de l'environnement et l'utilisation de matériaux locaux.
+                </p>
+                <div class="mt-12">
+                    <h3 class="text-2xl font-semibold text-center mb-6">L'Équipe</h3>
+                    <div class="flex flex-wrap justify-center gap-8">
+                        <div class="text-center">
+                            <img src="https://placehold.co/150x150/e5e7eb/4b5563?text=Photo" alt="Photo de l'architecte" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
+                            <p class="font-semibold text-lg">Prénom Nom 1</p>
+                            <p class="text-sm text-gray-500">Architecte associé</p>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://placehold.co/150x150/e5e7eb/4b5563?text=Photo" alt="Photo de l'architecte" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
+                            <p class="font-semibold text-lg">Prénom Nom 2</p>
+                            <p class="text-sm text-gray-500">Architecte chef de projet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section de la page de contact -->
+        <section id="contact" data-page="contact" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+            <div class="container mx-auto max-w-2xl text-gray-700">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nous Contacter</h2>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <!-- Mise à jour pour afficher uniquement les informations de contact -->
+                    <div class="text-center">
+                        <p class="text-lg font-medium">Contact direct</p>
+                        <p class="text-gray-600 mt-2">Email: contact@agence.com</p>
+                        <p class="text-gray-600">Téléphone: +33 1 23 45 67 89</p>
+                        <p class="text-gray-600 mt-4">Adresse: 123 Rue de l'Architecture, 75000 Paris</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-900 text-white py-6 mt-12">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2024 Agence d'Architecture. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JS Leaflet.js -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20n6c9Lp+b/d+E2/S/9G+V+U+b+Q+A+t+Z+O+S+N+Y="
+        crossorigin=""></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageSections = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let map; // Variable pour stocker l'instance de la carte
+
+            // Fonction pour afficher une page et cacher les autres
+            const showPage = (pageId) => {
+                pageSections.forEach(section => {
+                    if (section.id === pageId) {
+                        section.classList.remove('hidden');
+                        section.classList.add('flex', 'flex-col');
+                    } else {
+                        section.classList.add('hidden');
+                        section.classList.remove('flex', 'flex-col');
+                    }
+                });
+
+                // Si la page est la carte, initialiser la carte. On détruit la carte si on quitte la page.
+                if (pageId === 'map-projects') {
+                    if (!map) {
+                        initMap();
+                    } else {
+                        map.invalidateSize();
+                    }
+                } else {
+                    if (map) {
+                        map.remove();
+                        map = null;
+                    }
+                }
+            };
+
+            // Fonction pour gérer les liens de navigation
+            const setActiveLink = (pageId) => {
+                navLinks.forEach(link => {
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            };
+
+            // Gestion de la navigation
+            const handleNavigation = (e) => {
+                e.preventDefault(); 
+                const targetPage = e.currentTarget.dataset.page;
+                
+                history.pushState(null, '', e.currentTarget.href);
+                
+                showPage(targetPage);
+                setActiveLink(targetPage);
+            };
+
+            // Fonction d'initialisation de la carte
+            const initMap = () => {
+                // Initializing map
+                map = L.map('map-container').setView([48.8566, 2.3522], 6); // Centered on Paris with zoom level 6
+
+                // Adding a tile layer (OpenStreetMap)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Define project data with coordinates and details
+                const projects = [
+                    {
+                        name: "Maison O'Connor",
+                        coords: [48.8566, 2.3522], // Paris, France
+                        pageId: "project-1",
+                    },
+                    {
+                        name: "Bureaux XYZ",
+                        coords: [47.2184, -1.5536], // Nantes, France
+                        pageId: "project-2",
+                    },
+                    {
+                        name: "Musée de l'art moderne",
+                        coords: [43.6047, 1.4442], // Toulouse, France
+                        pageId: "project-3",
+                    }
+                ];
+
+                // Add markers for each project
+                projects.forEach(project => {
+                    L.marker(project.coords)
+                        .addTo(map)
+                        .bindPopup(`
+                            <div class="text-center font-semibold">
+                                <a href="#${project.pageId}" data-page="${project.pageId}" class="text-blue-600 hover:underline">
+                                    ${project.name}
+                                </a>
+                            </div>
+                        `);
+                });
+
+                // Add a click listener to the popups to handle navigation
+                const mapContainer = document.getElementById('map-container');
+                mapContainer.addEventListener('click', (e) => {
+                    if (e.target.dataset.page) {
+                        handleNavigation(e);
+                    }
+                });
+            };
+
+            // Add event listeners to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', handleNavigation);
+            });
+            
+            // Add event listeners to other links
+            const otherLinks = document.querySelectorAll('[data-page]:not(.nav-link)');
+            otherLinks.forEach(link => {
+                link.addEventListener('click', handleNavigation);
+            });
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', () => {
+                const currentPage = window.location.hash.substring(1) || 'home';
+                showPage(currentPage);
+                setActiveLink(currentPage);
+            });
+
+            // Display the default page on load
+            const initialPage = window.location.hash.substring(1) || 'home';
+            showPage(initialPage);
+            setActiveLink(initialPage);
+        });
+    </script>
+
+</body>
+</html>
