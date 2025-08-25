@@ -102,33 +102,42 @@
         <section id="portfolio" data-page="portfolio" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nos Projets</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Projet 1 -->
-                    <a href="#project-1" data-page="project-1" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                
+                <!-- Boutons de filtre de catégorie -->
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="all">Tous</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="residential">Résidentiel</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="commercial">Commercial</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="public">Public</button>
+                </div>
+
+                <div class="projects-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Projet 1 (Paris) - Catégorie Résidentiel -->
+                    <a href="#project-4" data-page="project-4" data-category="residential" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
                         <img src="images/maison-oconnor.jpg" alt="Image du Projet 1" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
-                                <h3 class="text-xl font-semibold mt-2">Maison O'Connor</h3>
-                                <p class="text-sm font-light mt-1">Résidence privée</p>
+                                <h3 class="text-xl font-semibold mt-2">Appartement Haussmannien</h3>
+                                <p class="text-sm font-light mt-1">Rénovation d'une résidence privée</p>
                             </div>
                         </div>
                     </a>
-                    <!-- Projet 2 -->
-                    <a href="#project-2" data-page="project-2" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <!-- Projet 2 (Paris) - Catégorie Commercial -->
+                    <a href="#project-5" data-page="project-5" data-category="commercial" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
                          <img src="images/bureaux-xyz.jpg" alt="Image du Projet 2" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
-                                <h3 class="text-xl font-semibold mt-2">Bureaux XYZ</h3>
+                                <h3 class="text-xl font-semibold mt-2">Boutique de Luxe Parisienne</h3>
                                 <p class="text-sm font-light mt-1">Espace commercial</p>
                             </div>
                         </div>
                     </a>
-                    <!-- Projet 3 -->
-                    <a href="#project-3" data-page="project-3" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <!-- Projet 3 (Paris) - Catégorie Public -->
+                    <a href="#project-6" data-page="project-6" data-category="public" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
                         <img src="images/musee-art.jpg" alt="Image du Projet 3" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
-                                <h3 class="text-xl font-semibold mt-2">Musée de l'art moderne</h3>
+                                <h3 class="text-xl font-semibold mt-2">Bibliothèque du Quartier Latin</h3>
                                 <p class="text-sm font-light mt-1">Bâtiment public</p>
                             </div>
                         </div>
@@ -147,11 +156,11 @@
             </div>
         </section>
         
-        <!-- Section pour la page détaillée du Projet 1 -->
-        <section id="project-1" data-page="project-1" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+        <!-- Section pour la page détaillée du Projet 4 (Paris) -->
+        <section id="project-4" data-page="project-4" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto max-w-4xl">
                 <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Maison O'Connor</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Appartement Haussmannien</h2>
 
                 <!-- CARROUSEL PHOTO -->
                 <div class="carousel-container relative">
@@ -176,21 +185,21 @@
                     <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
                     <ul class="list-disc list-inside space-y-2 mb-6">
                         <li><strong>Montant :</strong> 350 000€</li>
-                        <li><strong>Lieu :</strong> Penvénan, France</li>
+                        <li><strong>Lieu :</strong> Paris 16e arrondissement, France</li>
                         <li><strong>Surface :</strong> 250 m²</li>
                         <li><strong>Année :</strong> 2023</li>
                     </ul>
-                    <p class="leading-relaxed">La Maison O'Connor est un projet de résidence privée situé dans la campagne bretonne. L'objectif était de créer un espace de vie qui se fonde dans l'environnement naturel tout en offrant des intérieurs modernes et lumineux. Nous avons utilisé des matériaux locaux comme le bois et la pierre pour l'extérieur, tandis que l'intérieur est caractérisé par de grandes ouvertures et une palette de couleurs minimaliste.</p>
-                    <p class="leading-relaxed">Le design a été centré sur la durabilité et l'efficacité énergétique, intégrant des panneaux solaires et un système de récupération de l'eau de pluie. Chaque pièce est conçue pour maximiser la lumière naturelle et offrir des vues imprenables sur le paysage environnant.</p>
+                    <p class="leading-relaxed">Ce projet de rénovation a transformé un appartement haussmannien classique en un espace de vie moderne et fonctionnel, tout en préservant son charme historique. Les moulures et les cheminées d'origine ont été conservées et mises en valeur, créant un contraste élégant avec les équipements contemporains.</p>
+                    <p class="leading-relaxed">L'agencement intérieur a été repensé pour optimiser l'espace et la lumière naturelle. Le design a été centré sur des matériaux de haute qualité et une palette de couleurs sophistiquée, reflétant l'élégance parisienne.</p>
                 </div>
             </div>
         </section>
         
-        <!-- Section pour la page détaillée du Projet 2 -->
-        <section id="project-2" data-page="project-2" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+        <!-- Section pour la page détaillée du Projet 5 (Paris) -->
+        <section id="project-5" data-page="project-5" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto max-w-4xl">
                 <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Bureaux XYZ</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Boutique de Luxe Parisienne</h2>
 
                 <!-- CARROUSEL PHOTO -->
                 <div class="carousel-container relative">
@@ -215,21 +224,21 @@
                     <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
                     <ul class="list-disc list-inside space-y-2 mb-6">
                         <li><strong>Montant :</strong> 2 100 000€</li>
-                        <li><strong>Lieu :</strong> Nantes, France</li>
+                        <li><strong>Lieu :</strong> Paris 8e arrondissement, France</li>
                         <li><strong>Surface :</strong> 1200 m²</li>
                         <li><strong>Année :</strong> 2022</li>
                     </ul>
-                    <p class="leading-relaxed">Les bureaux XYZ ont été conçus pour une startup technologique. Le projet visait à créer un environnement de travail flexible et collaboratif qui encourage la créativité et le bien-être des employés. Nous avons opté pour un design industriel moderne avec des touches de couleurs vives.</p>
-                    <p class="leading-relaxed">Les espaces ouverts sont complétés par des zones de calme et des salles de réunion insonorisées. L'éclairage a été soigneusement étudié pour réduire la fatigue oculaire, et la présence de nombreuses plantes vertes contribue à une atmosphère saine et apaisante.</p>
+                    <p class="leading-relaxed">Nous avons conçu cette boutique de luxe pour une marque de haute couture renommée. Le projet visait à créer un espace qui incarne l'élégance et l'exclusivité de la marque. Nous avons utilisé des matériaux nobles comme le marbre, le bois de noyer et le laiton pour créer une atmosphère sophistiquée.</p>
+                    <p class="leading-relaxed">Chaque détail, de l'éclairage aux présentoirs, a été soigneusement pensé pour mettre en valeur les produits et offrir une expérience d'achat immersive. Les vitrines ont été conçues comme des œuvres d'art, attirant les passants et les invitant à découvrir l'univers de la marque.</p>
                 </div>
             </div>
         </section>
         
-        <!-- Section pour la page détaillée du Projet 3 -->
-        <section id="project-3" data-page="project-3" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
+        <!-- Section pour la page détaillée du Projet 6 (Paris) -->
+        <section id="project-6" data-page="project-6" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto max-w-4xl">
                 <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Musée de l'art moderne</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Bibliothèque du Quartier Latin</h2>
 
                  <!-- CARROUSEL PHOTO -->
                 <div class="carousel-container relative">
@@ -254,11 +263,11 @@
                     <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
                     <ul class="list-disc list-inside space-y-2 mb-6">
                         <li><strong>Montant :</strong> 8 500 000€</li>
-                        <li><strong>Lieu :</strong> Toulouse, France</li>
+                        <li><strong>Lieu :</strong> Paris 5e arrondissement, France</li>
                         <li><strong>Surface :</strong> 5000 m²</li>
                         <li><strong>Année :</strong> 2021</li>
                     </ul>
-                    <p class="leading-relaxed">La conception du Musée de l'art moderne est une exploration de la lumière et de l'espace. Le bâtiment, avec sa façade en verre et en béton, est une œuvre d'art en soi, conçue pour dialoguer avec les œuvres qu'il abrite. Les espaces d'exposition ont des hauteurs de plafond variables pour s'adapter à différents types d'œuvres, et la lumière naturelle est filtrée pour ne pas endommager les pièces exposées.</p>
+                    <p class="leading-relaxed">Ce projet de bibliothèque publique dans le Quartier Latin visait à créer un espace d'apprentissage et de communauté moderne qui respecte le patrimoine architectural du quartier. Le bâtiment, avec sa façade en pierre et ses grandes fenêtres, est une exploration de la lumière et de l'espace.</p>
                 </div>
             </div>
         </section>
@@ -319,6 +328,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const pageSections = document.querySelectorAll('.page-section');
+            const projectItems = document.querySelectorAll('.project-item');
+            const filterButtons = document.querySelectorAll('.filter-btn');
             let map; 
 
             const showPage = (pageId) => {
@@ -333,15 +344,11 @@
                 });
 
                 if (pageId === 'map-projects') {
-                    if (!map) {
-                        initMap();
-                    } else {
-                        map.invalidateSize();
-                    }
-                } else {
+                    // Si la carte existe déjà, on recalcule sa taille. Sinon, on l'initialise.
                     if (map) {
-                        map.remove();
-                        map = null;
+                        map.invalidateSize();
+                    } else {
+                        initMap();
                     }
                 }
             };
@@ -356,6 +363,30 @@
                     }
                 });
             };
+
+            const filterProjects = (category) => {
+                projectItems.forEach(item => {
+                    const projectCategory = item.dataset.category;
+                    if (category === 'all' || projectCategory === category) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            };
+
+            // Écouteur de clics sur les boutons de filtre
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Supprime la classe active de tous les boutons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Ajoute la classe active au bouton cliqué
+                    button.classList.add('active');
+
+                    const filter = button.dataset.filter;
+                    filterProjects(filter);
+                });
+            });
 
             // Nouvelle logique de navigation utilisant la délégation d'événements
             document.body.addEventListener('click', (e) => {
@@ -374,27 +405,29 @@
             });
 
             const initMap = () => {
-                map = L.map('map-container').setView([48.8566, 2.3522], 6);
+                // Centrage sur Paris et zoom 13 pour une vue de la ville
+                map = L.map('map-container').setView([48.8566, 2.3522], 13);
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
+                // Nouveaux projets basés à Paris
                 const projects = [
                     {
-                        name: "Maison O'Connor",
-                        coords: [48.8566, 2.3522],
-                        pageId: "project-1",
+                        name: "Appartement Haussmannien",
+                        coords: [48.8687, 2.3087], // 16e arrondissement
+                        pageId: "project-4",
                     },
                     {
-                        name: "Bureaux XYZ",
-                        coords: [47.2184, -1.5536],
-                        pageId: "project-2",
+                        name: "Boutique de Luxe Parisienne",
+                        coords: [48.8718, 2.3175], // 8e arrondissement
+                        pageId: "project-5",
                     },
                     {
-                        name: "Musée de l'art moderne",
-                        coords: [43.6047, 1.4442],
-                        pageId: "project-3",
+                        name: "Bibliothèque du Quartier Latin",
+                        coords: [48.8465, 2.3444], // 5e arrondissement
+                        pageId: "project-6",
                     }
                 ];
 
@@ -488,6 +521,8 @@
             showPage(initialPage);
             setActiveLink(initialPage);
             initCarousels();
+            // Appliquer le filtre "Tous" par défaut
+            filterProjects('all');
         });
     </script>
 </body>
