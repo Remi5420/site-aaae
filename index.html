@@ -23,7 +23,7 @@
         #map-container {
             height: 600px;
             width: 100%;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1-rgba(0, 0, 0, 0.06); /* shadow-lg */
         }
         .leaflet-popup-content-wrapper, .leaflet-popup-tip {
             border-radius: 0.5rem;
@@ -78,20 +78,21 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- Barre de navigation - Reste visible sur toutes les pages -->
-    <nav class="sticky top-0 z-50 bg-white shadow-sm py-4">
+    <!-- Barre de navigation principale - Reste visible sur toutes les pages sauf l'accueil -->
+    <nav id="nav-main" class="sticky top-0 z-50 bg-white shadow-sm py-4 hidden">
         <div class="container mx-auto px-4 flex justify-center space-x-4 md:space-x-6">
+            <!-- Mise à jour de l'ordre des liens -->
             <a href="#home" data-page="home" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
+            <a href="#about" data-page="about" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
             <a href="#portfolio" data-page="portfolio" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
             <a href="#map-projects" data-page="map-projects" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Carte des projets</a>
-            <a href="#about" data-page="about" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
             <a href="#contact" data-page="contact" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
         </div>
     </nav>
 
     <main class="flex-grow">
         <!-- Section de la page d'accueil avec le logo -->
-        <section id="home" data-page="home" class="page-section flex items-center justify-center min-h-screen">
+        <section id="home" data-page="home" class="page-section flex flex-col items-center justify-center min-h-screen">
             <div class="text-center p-8">
                 <img src="images/logo.jpg" alt="Logo de l'agence Alter Ego" class="mx-auto w-64 md:w-80 mb-6">
                 <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
@@ -100,6 +101,17 @@
                 <p class="mt-4 text-xl md:text-2xl text-gray-600 font-light">
                     ATELIER D'ARCHITECTURE
                 </p>
+                <!-- Menu de navigation pour la page d'accueil, affiché sous le logo -->
+                <!-- Mise à jour pour un menu plus petit et réorganisé -->
+                <nav id="nav-home" class="mt-8">
+                    <div class="flex justify-center space-x-2 md:space-x-4">
+                        <a href="#home" data-page="home" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
+                        <a href="#about" data-page="about" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
+                        <a href="#portfolio" data-page="portfolio" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
+                        <a href="#map-projects" data-page="map-projects" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Carte des projets</a>
+                        <a href="#contact" data-page="contact" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
+                    </div>
+                </nav>
             </div>
         </section>
 
@@ -107,7 +119,7 @@
         <section id="portfolio" data-page="portfolio" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nos Projets</h2>
-                
+
                 <!-- Boutons de filtre de catégorie -->
                 <div class="flex justify-center space-x-4 mb-8">
                     <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="all">Tous</button>
@@ -151,7 +163,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Nouvelle section pour la carte des projets -->
         <section id="map-projects" data-page="map-projects" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto">
@@ -160,7 +172,7 @@
                 <div id="map-container"></div>
             </div>
         </section>
-        
+
         <!-- Section pour la page détaillée du Projet 4 (Paris) -->
         <section id="project-4" data-page="project-4" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto max-w-4xl">
@@ -199,7 +211,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Section pour la page détaillée du Projet 5 (Paris) -->
         <section id="project-5" data-page="project-5" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto max-w-4xl">
@@ -238,7 +250,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Section pour la page détaillée du Projet 6 (Paris) -->
         <section id="project-6" data-page="project-6" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto max-w-4xl">
@@ -318,7 +330,7 @@
             </div>
         </section>
     </main>
-    
+
     <footer class="bg-gray-900 text-white py-6 mt-12">
         <div class="container mx-auto text-center text-sm">
             <p>&copy; 2024 Agence d'Architecture. Tous droits réservés.</p>
@@ -330,7 +342,9 @@
             const pageSections = document.querySelectorAll('.page-section');
             const projectItems = document.querySelectorAll('.project-item');
             const filterButtons = document.querySelectorAll('.filter-btn');
-            let map; 
+            const navMain = document.getElementById('nav-main');
+            const navHome = document.getElementById('nav-home');
+            let map;
 
             const showPage = (pageId) => {
                 pageSections.forEach(section => {
@@ -342,6 +356,16 @@
                         section.classList.remove('flex', 'flex-col');
                     }
                 });
+
+                // Gère l'affichage des menus de navigation
+                if (pageId === 'home') {
+                    navMain.classList.add('hidden');
+                    if (navHome) navHome.classList.remove('hidden');
+                } else {
+                    navMain.classList.remove('hidden');
+                    if (navHome) navHome.classList.add('hidden');
+                }
+
 
                 if (pageId === 'map-projects') {
                     // On vérifie si la carte existe déjà avant de l'initialiser
@@ -394,9 +418,9 @@
                 if (link) {
                     e.preventDefault();
                     const targetPage = link.dataset.page;
-                    
+
                     window.location.hash = targetPage;
-                    
+
                     showPage(targetPage);
                     setActiveLink(targetPage);
 
@@ -468,7 +492,7 @@
                             updateCarousel();
                         });
                     }
-                    
+
                     if(prevBtn){
                         prevBtn.addEventListener('click', () => {
                             if (currentIndex > 0) {
