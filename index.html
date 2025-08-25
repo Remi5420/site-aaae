@@ -319,10 +319,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const pageSections = document.querySelectorAll('.page-section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            let map; // Variable pour stocker l'instance de la carte
+            const links = document.querySelectorAll('[data-page]'); // Sélectionne tous les liens avec l'attribut data-page
+            let map; 
 
-            // Fonction pour afficher une page et cacher les autres
             const showPage = (pageId) => {
                 pageSections.forEach(section => {
                     if (section.id === pageId) {
@@ -334,7 +333,6 @@
                     }
                 });
 
-                // Si la page est la carte, initialiser la carte. On détruit la carte si on quitte la page.
                 if (pageId === 'map-projects') {
                     if (!map) {
                         initMap();
@@ -349,8 +347,8 @@
                 }
             };
 
-            // Fonction pour gérer les liens de navigation
             const setActiveLink = (pageId) => {
+                const navLinks = document.querySelectorAll('.nav-link');
                 navLinks.forEach(link => {
                     if (link.dataset.page === pageId) {
                         link.classList.add('active');
@@ -360,51 +358,43 @@
                 });
             };
 
-            // Gestion de la navigation
             const handleNavigation = (e) => {
                 e.preventDefault(); 
                 const targetPage = e.currentTarget.dataset.page;
                 
-                // Mettre à jour l'URL sans recharger la page
                 window.location.hash = targetPage;
                 
                 showPage(targetPage);
                 setActiveLink(targetPage);
 
-                // Initialiser les carrousels après le changement de page
                 initCarousels();
             };
 
-            // Fonction d'initialisation de la carte
             const initMap = () => {
-                // Initializing map
-                map = L.map('map-container').setView([48.8566, 2.3522], 6); // Centered on Paris with zoom level 6
+                map = L.map('map-container').setView([48.8566, 2.3522], 6);
 
-                // Adding a tile layer (OpenStreetMap)
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
-                // Define project data with coordinates and details
                 const projects = [
                     {
                         name: "Maison O'Connor",
-                        coords: [48.8566, 2.3522], // Paris, France
+                        coords: [48.8566, 2.3522],
                         pageId: "project-1",
                     },
                     {
                         name: "Bureaux XYZ",
-                        coords: [47.2184, -1.5536], // Nantes, France
+                        coords: [47.2184, -1.5536],
                         pageId: "project-2",
                     },
                     {
                         name: "Musée de l'art moderne",
-                        coords: [43.6047, 1.4442], // Toulouse, France
+                        coords: [43.6047, 1.4442],
                         pageId: "project-3",
                     }
                 ];
 
-                // Add markers for each project
                 projects.forEach(project => {
                     L.marker(project.coords)
                         .addTo(map)
@@ -417,7 +407,6 @@
                         `);
                 });
 
-                // Add a click listener to the popups to handle navigation
                 const mapContainer = document.getElementById('map-container');
                 mapContainer.addEventListener('click', (e) => {
                     if (e.target.dataset.page) {
@@ -426,7 +415,6 @@
                 });
             };
 
-            // Fonction pour initialiser les carrousels sur chaque page de projet
             const initCarousels = () => {
                 document.querySelectorAll('.carousel-container').forEach(container => {
                     const wrapper = container.querySelector('.carousel-wrapper');
@@ -436,33 +424,29 @@
                     const items = wrapper.querySelectorAll('.carousel-item');
                     const totalItems = items.length;
 
-                    // Fonction pour mettre à jour la position du carrousel
                     const updateCarousel = () => {
                         const offset = -currentIndex * 100;
                         wrapper.style.transform = `translateX(${offset}%)`;
                     };
 
-                    // Gérer le clic sur le bouton 'Suivant'
                     nextBtn.addEventListener('click', () => {
                         if (currentIndex < totalItems - 1) {
                             currentIndex++;
                         } else {
-                            currentIndex = 0; // Retour au début
+                            currentIndex = 0;
                         }
                         updateCarousel();
                     });
 
-                    // Gérer le clic sur le bouton 'Précédent'
                     prevBtn.addEventListener('click', () => {
                         if (currentIndex > 0) {
                             currentIndex--;
                         } else {
-                            currentIndex = totalItems - 1; // Retour à la fin
+                            currentIndex = totalItems - 1;
                         }
                         updateCarousel();
                     });
 
-                    // Gérer le défilement tactile (optionnel)
                     let startX;
                     wrapper.addEventListener('touchstart', (e) => {
                         startX = e.touches[0].clientX;
@@ -473,14 +457,12 @@
                     wrapper.addEventListener('touchend', (e) => {
                         const endX = e.changedTouches[0].clientX;
                         if (startX - endX > 50) {
-                            // Glissement vers la gauche (suivant)
                             if (currentIndex < totalItems - 1) {
                                 currentIndex++;
                             } else {
                                 currentIndex = 0;
                             }
                         } else if (startX - endX < -50) {
-                            // Glissement vers la droite (précédent)
                             if (currentIndex > 0) {
                                 currentIndex--;
                             } else {
@@ -491,34 +473,26 @@
                     });
                 });
             };
-
-            // Add event listeners to navigation links
-            navLinks.forEach(link => {
-                link.addEventListener('click', handleNavigation);
-            });
             
-            // Add event listeners to other links
-            const otherLinks = document.querySelectorAll('[data-page]:not(.nav-link)');
-            otherLinks.forEach(link => {
+            // Écouteur d'événements unique pour tous les liens de navigation
+            links.forEach(link => {
                 link.addEventListener('click', handleNavigation);
             });
 
-            // Handle browser back/forward buttons
+            // Gérer les boutons retour/avance du navigateur
             window.addEventListener('popstate', () => {
                 const currentPage = window.location.hash.substring(1) || 'home';
                 showPage(currentPage);
                 setActiveLink(currentPage);
             });
 
-            // Display the default page on load
+            // Afficher la page par défaut au chargement
             const initialPage = window.location.hash.substring(1) || 'home';
             showPage(initialPage);
             setActiveLink(initialPage);
 
-            // Initialiser les carrousels au chargement de la page
             initCarousels();
         });
     </script>
-
 </body>
 </html>
