@@ -105,7 +105,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Projet 1 -->
                     <a href="#project-1" data-page="project-1" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <img src="images/43 rue d'enghien.png" alt="Image du Projet 1" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <img src="images/maison-oconnor.jpg" alt="Image du Projet 1" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
                                 <h3 class="text-xl font-semibold mt-2">Maison O'Connor</h3>
@@ -319,7 +319,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const pageSections = document.querySelectorAll('.page-section');
-            const links = document.querySelectorAll('[data-page]'); // Sélectionne tous les liens avec l'attribut data-page
             let map; 
 
             const showPage = (pageId) => {
@@ -358,17 +357,21 @@
                 });
             };
 
-            const handleNavigation = (e) => {
-                e.preventDefault(); 
-                const targetPage = e.currentTarget.dataset.page;
-                
-                window.location.hash = targetPage;
-                
-                showPage(targetPage);
-                setActiveLink(targetPage);
+            // Nouvelle logique de navigation utilisant la délégation d'événements
+            document.body.addEventListener('click', (e) => {
+                const link = e.target.closest('[data-page]');
+                if (link) {
+                    e.preventDefault();
+                    const targetPage = link.dataset.page;
+                    
+                    window.location.hash = targetPage;
+                    
+                    showPage(targetPage);
+                    setActiveLink(targetPage);
 
-                initCarousels();
-            };
+                    initCarousels();
+                }
+            });
 
             const initMap = () => {
                 map = L.map('map-container').setView([48.8566, 2.3522], 6);
@@ -406,13 +409,6 @@
                             </div>
                         `);
                 });
-
-                const mapContainer = document.getElementById('map-container');
-                mapContainer.addEventListener('click', (e) => {
-                    if (e.target.dataset.page) {
-                        handleNavigation(e);
-                    }
-                });
             };
 
             const initCarousels = () => {
@@ -429,55 +425,56 @@
                         wrapper.style.transform = `translateX(${offset}%)`;
                     };
 
-                    nextBtn.addEventListener('click', () => {
-                        if (currentIndex < totalItems - 1) {
-                            currentIndex++;
-                        } else {
-                            currentIndex = 0;
-                        }
-                        updateCarousel();
-                    });
-
-                    prevBtn.addEventListener('click', () => {
-                        if (currentIndex > 0) {
-                            currentIndex--;
-                        } else {
-                            currentIndex = totalItems - 1;
-                        }
-                        updateCarousel();
-                    });
-
-                    let startX;
-                    wrapper.addEventListener('touchstart', (e) => {
-                        startX = e.touches[0].clientX;
-                    });
-                    wrapper.addEventListener('touchmove', (e) => {
-                        e.preventDefault();
-                    });
-                    wrapper.addEventListener('touchend', (e) => {
-                        const endX = e.changedTouches[0].clientX;
-                        if (startX - endX > 50) {
+                    if(nextBtn){
+                        nextBtn.addEventListener('click', () => {
                             if (currentIndex < totalItems - 1) {
                                 currentIndex++;
                             } else {
                                 currentIndex = 0;
                             }
-                        } else if (startX - endX < -50) {
+                            updateCarousel();
+                        });
+                    }
+                    
+                    if(prevBtn){
+                        prevBtn.addEventListener('click', () => {
                             if (currentIndex > 0) {
                                 currentIndex--;
                             } else {
                                 currentIndex = totalItems - 1;
                             }
-                        }
-                        updateCarousel();
-                    });
+                            updateCarousel();
+                        });
+                    }
+
+                    let startX;
+                    if(wrapper){
+                        wrapper.addEventListener('touchstart', (e) => {
+                            startX = e.touches[0].clientX;
+                        });
+                        wrapper.addEventListener('touchmove', (e) => {
+                            e.preventDefault();
+                        });
+                        wrapper.addEventListener('touchend', (e) => {
+                            const endX = e.changedTouches[0].clientX;
+                            if (startX - endX > 50) {
+                                if (currentIndex < totalItems - 1) {
+                                    currentIndex++;
+                                } else {
+                                    currentIndex = 0;
+                                }
+                            } else if (startX - endX < -50) {
+                                if (currentIndex > 0) {
+                                    currentIndex--;
+                                } else {
+                                    currentIndex = totalItems - 1;
+                                }
+                            }
+                            updateCarousel();
+                        });
+                    }
                 });
             };
-            
-            // Écouteur d'événements unique pour tous les liens de navigation
-            links.forEach(link => {
-                link.addEventListener('click', handleNavigation);
-            });
 
             // Gérer les boutons retour/avance du navigateur
             window.addEventListener('popstate', () => {
@@ -490,7 +487,6 @@
             const initialPage = window.location.hash.substring(1) || 'home';
             showPage(initialPage);
             setActiveLink(initialPage);
-
             initCarousels();
         });
     </script>
