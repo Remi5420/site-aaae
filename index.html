@@ -23,11 +23,47 @@
         #map-container {
             height: 600px;
             width: 100%;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1-px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
         }
         .leaflet-popup-content-wrapper, .leaflet-popup-tip {
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Styles pour le carrousel */
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            /* Utilisation de scroll-snap pour un défilement fluide */
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            overflow-x: scroll;
+        }
+        .carousel-item {
+            flex: 0 0 100%;
+            width: 100%;
+            scroll-snap-align: start;
+        }
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .carousel-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
         }
     </style>
     <!-- CSS Leaflet.js -->
@@ -52,9 +88,7 @@
         <!-- Section de la page d'accueil avec le logo -->
         <section id="home" data-page="home" class="page-section flex items-center justify-center min-h-screen">
             <div class="text-center p-8">
-                <!-- Mise à jour du lien du logo pour qu'il pointe vers votre fichier GitHub -->
-                <!-- ASSUREZ-VOUS QUE LE NOM ET L'EXTENSION SONT CORRECTS (par exemple, logo.png, logo.jpeg, etc.) -->
-                <img src="images/logo.jpeg" alt="Logo de l'agence Alter Ego" class="mx-auto w-64 md:w-80 mb-6">
+                <img src="images/logo.jpg" alt="Logo de l'agence Alter Ego" class="mx-auto w-64 md:w-80 mb-6">
                 <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
                     Alter Ego
                 </h1>
@@ -71,8 +105,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Projet 1 -->
                     <a href="#project-1" data-page="project-1" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
-                        <img src="images/43 rue d'enghien.png" alt="Image du Projet 1" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <img src="images/maison-oconnor.jpg" alt="Image du Projet 1" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
                                 <h3 class="text-xl font-semibold mt-2">Maison O'Connor</h3>
@@ -82,8 +115,7 @@
                     </a>
                     <!-- Projet 2 -->
                     <a href="#project-2" data-page="project-2" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                         <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
-                        <img src="images/bureaux-xyz.jpg" alt="Image du Projet 2" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                         <img src="images/bureaux-xyz.jpg" alt="Image du Projet 2" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
                                 <h3 class="text-xl font-semibold mt-2">Bureaux XYZ</h3>
@@ -93,7 +125,6 @@
                     </a>
                     <!-- Projet 3 -->
                     <a href="#project-3" data-page="project-3" class="group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
                         <img src="images/musee-art.jpg" alt="Image du Projet 3" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
@@ -121,16 +152,36 @@
             <div class="container mx-auto max-w-4xl">
                 <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">Maison O'Connor</h2>
-                <p class="text-gray-500 mb-8">Résidence privée | 2023 | 250 m²</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
-                    <img src="images/maison-oconnor-exterieur.jpg" alt="Vue extérieure de la Maison O'Connor" class="w-full rounded-xl shadow-lg">
-                    <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
-                    <img src="images/maison-oconnor-interieur.jpg" alt="Vue intérieure de la Maison O'Connor" class="w-full rounded-xl shadow-lg">
+
+                <!-- CARROUSEL PHOTO -->
+                <div class="carousel-container relative">
+                    <div class="carousel-wrapper flex">
+                        <!-- Remplacez les liens d'image ci-dessous par les vôtres -->
+                        <div class="carousel-item">
+                            <img src="images/maison-oconnor-exterieur.jpg" alt="Vue extérieure de la Maison O'Connor" class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/maison-oconnor-interieur.jpg" alt="Vue intérieure de la Maison O'Connor" class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/E3F2FD/0D47A1?text=Image+3" alt="Image 3" class="w-full rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev">&#10094;</button>
+                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next">&#10095;</button>
                 </div>
+                <!-- FIN CARROUSEL PHOTO -->
+
                 <div class="mt-8 prose max-w-none text-gray-700">
-                    <p>La Maison O'Connor est un projet de résidence privée situé dans la campagne. L'objectif était de créer un espace de vie qui se fond dans l'environnement naturel tout en offrant des intérieurs modernes et lumineux. Nous avons utilisé des matériaux locaux comme le bois et la pierre pour l'extérieur, tandis que l'intérieur est caractérisé par de grandes ouvertures et une palette de couleurs minimaliste.</p>
-                    <p>Le design a été centré sur la durabilité et l'efficacité énergétique, intégrant des panneaux solaires et un système de récupération de l'eau de pluie. Chaque pièce est conçue pour maximiser la lumière naturelle et offrir des vues imprenables sur le paysage environnant.</p>
+                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        <li><strong>Montant :</strong> 350 000€</li>
+                        <li><strong>Lieu :</strong> Penvénan, France</li>
+                        <li><strong>Surface :</strong> 250 m²</li>
+                        <li><strong>Année :</strong> 2023</li>
+                    </ul>
+                    <p class="leading-relaxed">La Maison O'Connor est un projet de résidence privée situé dans la campagne bretonne. L'objectif était de créer un espace de vie qui se fonde dans l'environnement naturel tout en offrant des intérieurs modernes et lumineux. Nous avons utilisé des matériaux locaux comme le bois et la pierre pour l'extérieur, tandis que l'intérieur est caractérisé par de grandes ouvertures et une palette de couleurs minimaliste.</p>
+                    <p class="leading-relaxed">Le design a été centré sur la durabilité et l'efficacité énergétique, intégrant des panneaux solaires et un système de récupération de l'eau de pluie. Chaque pièce est conçue pour maximiser la lumière naturelle et offrir des vues imprenables sur le paysage environnant.</p>
                 </div>
             </div>
         </section>
@@ -140,16 +191,36 @@
             <div class="container mx-auto max-w-4xl">
                 <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">Bureaux XYZ</h2>
-                <p class="text-gray-500 mb-8">Espace commercial | 2022 | 1200 m²</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
-                    <img src="images/bureaux-exterieur.jpg" alt="Vue extérieure des bureaux XYZ" class="w-full rounded-xl shadow-lg">
-                    <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
-                    <img src="images/bureaux-interieur.jpg" alt="Espace de travail des bureaux XYZ" class="w-full rounded-xl shadow-lg">
+
+                <!-- CARROUSEL PHOTO -->
+                <div class="carousel-container relative">
+                    <div class="carousel-wrapper flex">
+                        <!-- Remplacez les liens d'image ci-dessous par les vôtres -->
+                        <div class="carousel-item">
+                            <img src="images/bureaux-exterieur.jpg" alt="Vue extérieure des bureaux XYZ" class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/bureaux-interieur.jpg" alt="Espace de travail des bureaux XYZ" class="w-full rounded-xl shadow-lg">
+                        </div>
+                         <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/E3F2FD/0D47A1?text=Image+3" alt="Image 3" class="w-full rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev">&#10094;</button>
+                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next">&#10095;</button>
                 </div>
+                <!-- FIN CARROUSEL PHOTO -->
+
                 <div class="mt-8 prose max-w-none text-gray-700">
-                    <p>Les bureaux XYZ ont été conçus pour une startup technologique. Le projet visait à créer un environnement de travail flexible et collaboratif qui encourage la créativité et le bien-être des employés. Nous avons opté pour un design industriel moderne avec des touches de couleurs vives.</p>
-                    <p>Les espaces ouverts sont complétés par des zones de calme et des salles de réunion insonorisées. L'éclairage a été soigneusement étudié pour réduire la fatigue oculaire, et la présence de nombreuses plantes vertes contribue à une atmosphère saine et apaisante.</p>
+                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        <li><strong>Montant :</strong> 2 100 000€</li>
+                        <li><strong>Lieu :</strong> Nantes, France</li>
+                        <li><strong>Surface :</strong> 1200 m²</li>
+                        <li><strong>Année :</strong> 2022</li>
+                    </ul>
+                    <p class="leading-relaxed">Les bureaux XYZ ont été conçus pour une startup technologique. Le projet visait à créer un environnement de travail flexible et collaboratif qui encourage la créativité et le bien-être des employés. Nous avons opté pour un design industriel moderne avec des touches de couleurs vives.</p>
+                    <p class="leading-relaxed">Les espaces ouverts sont complétés par des zones de calme et des salles de réunion insonorisées. L'éclairage a été soigneusement étudié pour réduire la fatigue oculaire, et la présence de nombreuses plantes vertes contribue à une atmosphère saine et apaisante.</p>
                 </div>
             </div>
         </section>
@@ -159,15 +230,35 @@
             <div class="container mx-auto max-w-4xl">
                 <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">Musée de l'art moderne</h2>
-                <p class="text-gray-500 mb-8">Bâtiment public | 2021 | 5000 m²</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
-                    <img src="images/musee-facade.jpg" alt="Façade du musée de l'art moderne" class="w-full rounded-xl shadow-lg">
-                    <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
-                    <img src="images/musee-galerie.jpg" alt="Galerie d'exposition du musée" class="w-full rounded-xl shadow-lg">
+
+                 <!-- CARROUSEL PHOTO -->
+                <div class="carousel-container relative">
+                    <div class="carousel-wrapper flex">
+                        <!-- Remplacez les liens d'image ci-dessous par les vôtres -->
+                        <div class="carousel-item">
+                            <img src="images/musee-facade.jpg" alt="Façade du musée de l'art moderne" class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/musee-galerie.jpg" alt="Galerie d'exposition du musée" class="w-full rounded-xl shadow-lg">
+                        </div>
+                         <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/E3F2FD/0D47A1?text=Image+3" alt="Image 3" class="w-full rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev">&#10094;</button>
+                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next">&#10095;</button>
                 </div>
+                <!-- FIN CARROUSEL PHOTO -->
+
                 <div class="mt-8 prose max-w-none text-gray-700">
-                    <p>La conception du Musée de l'art moderne est une exploration de la lumière et de l'espace. Le bâtiment, avec sa façade en verre et en béton, est une œuvre d'art en soi, conçue pour dialoguer avec les œuvres qu'il abrite. Les espaces d'exposition ont des hauteurs de plafond variables pour s'adapter à différents types d'œuvres, et la lumière naturelle est filtrée pour ne pas endommager les pièces exposées.</p>
+                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        <li><strong>Montant :</strong> 8 500 000€</li>
+                        <li><strong>Lieu :</strong> Toulouse, France</li>
+                        <li><strong>Surface :</strong> 5000 m²</li>
+                        <li><strong>Année :</strong> 2021</li>
+                    </ul>
+                    <p class="leading-relaxed">La conception du Musée de l'art moderne est une exploration de la lumière et de l'espace. Le bâtiment, avec sa façade en verre et en béton, est une œuvre d'art en soi, conçue pour dialoguer avec les œuvres qu'il abrite. Les espaces d'exposition ont des hauteurs de plafond variables pour s'adapter à différents types d'œuvres, et la lumière naturelle est filtrée pour ne pas endommager les pièces exposées.</p>
                 </div>
             </div>
         </section>
@@ -183,13 +274,11 @@
                     <h3 class="text-2xl font-semibold text-center mb-6">L'Équipe</h3>
                     <div class="flex flex-wrap justify-center gap-8">
                         <div class="text-center">
-                            <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
                             <img src="images/equipe1.jpg" alt="Photo de l'architecte" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
                             <p class="font-semibold text-lg">Prénom Nom 1</p>
                             <p class="text-sm text-gray-500">Architecte associé</p>
                         </div>
                         <div class="text-center">
-                            <!-- REMPLACER LE LIEN PLACEHOLDER PAR VOTRE IMAGE DANS LE DOSSIER 'images' -->
                             <img src="images/equipe2.jpg" alt="Photo de l'architecte" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
                             <p class="font-semibold text-lg">Prénom Nom 2</p>
                             <p class="text-sm text-gray-500">Architecte chef de projet</p>
@@ -280,6 +369,9 @@
                 
                 showPage(targetPage);
                 setActiveLink(targetPage);
+
+                // Initialiser les carrousels après le changement de page
+                initCarousels();
             };
 
             // Fonction d'initialisation de la carte
@@ -333,6 +425,72 @@
                 });
             };
 
+            // Fonction pour initialiser les carrousels sur chaque page de projet
+            const initCarousels = () => {
+                document.querySelectorAll('.carousel-container').forEach(container => {
+                    const wrapper = container.querySelector('.carousel-wrapper');
+                    const prevBtn = container.querySelector('[data-direction="prev"]');
+                    const nextBtn = container.querySelector('[data-direction="next"]');
+                    let currentIndex = 0;
+                    const items = wrapper.querySelectorAll('.carousel-item');
+                    const totalItems = items.length;
+
+                    // Fonction pour mettre à jour la position du carrousel
+                    const updateCarousel = () => {
+                        const offset = -currentIndex * 100;
+                        wrapper.style.transform = `translateX(${offset}%)`;
+                    };
+
+                    // Gérer le clic sur le bouton 'Suivant'
+                    nextBtn.addEventListener('click', () => {
+                        if (currentIndex < totalItems - 1) {
+                            currentIndex++;
+                        } else {
+                            currentIndex = 0; // Retour au début
+                        }
+                        updateCarousel();
+                    });
+
+                    // Gérer le clic sur le bouton 'Précédent'
+                    prevBtn.addEventListener('click', () => {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                        } else {
+                            currentIndex = totalItems - 1; // Retour à la fin
+                        }
+                        updateCarousel();
+                    });
+
+                    // Gérer le défilement tactile (optionnel)
+                    let startX;
+                    wrapper.addEventListener('touchstart', (e) => {
+                        startX = e.touches[0].clientX;
+                    });
+                    wrapper.addEventListener('touchmove', (e) => {
+                        e.preventDefault();
+                    });
+                    wrapper.addEventListener('touchend', (e) => {
+                        const endX = e.changedTouches[0].clientX;
+                        if (startX - endX > 50) {
+                            // Glissement vers la gauche (suivant)
+                            if (currentIndex < totalItems - 1) {
+                                currentIndex++;
+                            } else {
+                                currentIndex = 0;
+                            }
+                        } else if (startX - endX < -50) {
+                            // Glissement vers la droite (précédent)
+                            if (currentIndex > 0) {
+                                currentIndex--;
+                            } else {
+                                currentIndex = totalItems - 1;
+                            }
+                        }
+                        updateCarousel();
+                    });
+                });
+            };
+
             // Add event listeners to navigation links
             navLinks.forEach(link => {
                 link.addEventListener('click', handleNavigation);
@@ -355,10 +513,11 @@
             const initialPage = window.location.hash.substring(1) || 'home';
             showPage(initialPage);
             setActiveLink(initialPage);
+
+            // Initialiser les carrousels au chargement de la page
+            initCarousels();
         });
     </script>
 
 </body>
 </html>
-
-
