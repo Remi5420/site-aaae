@@ -24,16 +24,22 @@
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
-            overflow: hidden;
             border-radius: 1rem;
+            /* Hauteur fixe pour le conteneur du carrousel */
+            height: 600px;
         }
         .carousel-wrapper {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            height: 100%;
             /* Utilisation de scroll-snap pour un défilement fluide */
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
             overflow-x: scroll;
+            /* Masque la barre de défilement */
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .carousel-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
         .carousel-item {
             flex: 0 0 100%;
@@ -55,6 +61,11 @@
         .carousel-nav-btn:hover {
             background: rgba(0, 0, 0, 0.8);
         }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -74,7 +85,8 @@
         <!-- Section de la page d'accueil avec le logo -->
         <section id="home" data-page="home" class="page-section flex flex-col items-center justify-center min-h-screen">
             <div class="text-center p-8">
-                <img src="images/logoAAAE2 sans texte.jpg" alt="Logo de l'agence Alter Ego" class="mx-auto w-64 md:w-80 mb-6">
+                <!-- Remplacez l'URL de l'image du logo par une URL valide si vous en avez une. -->
+                <img src="https://placehold.co/256x256/E5E7EB/1F2937?text=LOGO" alt="Logo de l'agence Alter Ego" class="mx-auto w-64 md:w-80 mb-6 rounded-full">
                 <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
                     Alter Ego
                 </h1>
@@ -101,16 +113,17 @@
 
                 <!-- Boutons de filtre de catégorie -->
                 <div class="flex justify-center space-x-4 mb-8">
-                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="all">Tous</button>
-                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="residential">Ravalement</button>
-                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="commercial">Couverture</button>
-                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="public">Caves</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200 active" data-filter="all">Tous</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Ravalement">Ravalement</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Couverture">Couverture</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Caves">Caves</button>
                 </div>
 
                 <div class="projects-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Projet 1 (Paris) - Catégorie Résidentiel -->
+                    <!-- Projet 1 (Paris) - Catégorie Ravalement -->
                     <a href="#project-1" data-page="project-1" data-category="Ravalement" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <img src="images/ENGHIEN (1).jpeg" alt="Image du Projet 1" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <!-- Utilisation de la placehold.co pour l'image -->
+                        <img src="https://placehold.co/600x600/E3F2FD/0D47A1?text=Projet+1" alt="Image du Projet 1" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
                                 <h3 class="text-xl font-semibold mt-2">43 rue d'Enghien 75010</h3>
@@ -118,9 +131,9 @@
                             </div>
                         </div>
                     </a>
-                    <!-- Projet 2 (Paris) - Catégorie Commercial -->
-                    <a href="#project-2" data-page="project-2" data-category="commercial" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                         <img src="images/bureaux-xyz.jpg" alt="Image du Projet 2" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                    <!-- Projet 2 (Paris) - Catégorie Couverture -->
+                    <a href="#project-2" data-page="project-2" data-category="Couverture" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x600/FCE4EC/880E4F?text=Projet+2" alt="Image du Projet 2" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
                                 <h3 class="text-xl font-semibold mt-2">Boutique de Luxe Parisienne</h3>
@@ -128,9 +141,9 @@
                             </div>
                         </div>
                     </a>
-                    <!-- Projet 3 (Paris) - Catégorie Public -->
-                    <a href="#project-3" data-page="project-3" data-category="public" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <img src="images/musee-art.jpg" alt="Image du Projet 3" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                    <!-- Projet 3 (Paris) - Catégorie Caves -->
+                    <a href="#project-3" data-page="project-3" data-category="Caves" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x600/E8F5E9/1B5E20?text=Projet+3" alt="Image du Projet 3" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="text-center text-white">
                                 <h3 class="text-xl font-semibold mt-2">Bibliothèque du Quartier Latin</h3>
@@ -154,16 +167,13 @@
                     <div class="carousel-wrapper flex">
                         <!-- Remplacez les liens d'image ci-dessous par les vôtres -->
                         <div class="carousel-item">
-                            <img src="images/ENGHIEN (1).jpeg" alt="Vue façade rue" class="w-full rounded-xl shadow-lg">
+                            <img src="https://placehold.co/1000x600/E3F2FD/0D47A1?text=Image+1" alt="Vue façade rue" class="w-full rounded-xl shadow-lg">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/ENGHIEN2.png" alt="Vue intérieure de la Maison O'Connor" class="w-full rounded-xl shadow-lg">
-                        </div>
-                           <div class="carousel-item">
-                               <img src="images/ENGHIEN3.png" alt="Vue intérieure de la Maison O'Connor" class="w-full rounded-xl shadow-lg">
+                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Image+2" alt="Vue intérieure" class="w-full rounded-xl shadow-lg">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/E3F2FD/0D47A1?text=Image+3" alt="Image 3" class="w-full rounded-xl shadow-lg">
+                             <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Image+3" alt="Vue détaillée" class="w-full rounded-xl shadow-lg">
                         </div>
                     </div>
                     <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev">&#10094;</button>
@@ -178,8 +188,8 @@
                         <li><strong>Lieu :</strong> Paris 10e arrondissement, France</li>
                         <li><strong>Année :</strong> 2024</li>
                     </ul>
-                    <p class="leading-relaxed">Projet de ravalement de la façade sur rue d'un immeuble hausmannien comprenends hdhdhushhujshhs.</p>
-                    <p class="leading-relaxed">L'agencement intérieur a été repensé pour optimiser l'espace et la lumière naturelle. Le design a été centré sur des matériaux de haute qualité et une palette de couleurs sophistiquée, reflétant l'élégance parisienne.</p>
+                    <p class="leading-relaxed">Projet de ravalement de la façade sur rue d'un immeuble haussmannien. Les travaux comprennent un nettoyage des façades, la réparation des éléments de modénature et une remise en peinture. Le projet est soumis à l'approbation des Bâtiments de France.</p>
+                    <p class="leading-relaxed">Une réfection de la couverture est également prévue, avec le remplacement des ardoises endommagées et la mise aux normes de l'isolation.</p>
                 </div>
             </div>
         </section>
@@ -195,13 +205,13 @@
                     <div class="carousel-wrapper flex">
                         <!-- Remplacez les liens d'image ci-dessous par les vôtres -->
                         <div class="carousel-item">
-                            <img src="images/bureaux-exterieur.jpg" alt="Vue extérieure des bureaux XYZ" class="w-full rounded-xl shadow-lg">
+                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Boutique+Exterieur" alt="Vue extérieure des bureaux XYZ" class="w-full rounded-xl shadow-lg">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/bureaux-interieur.jpg" alt="Espace de travail des bureaux XYZ" class="w-full rounded-xl shadow-lg">
+                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Boutique+Interieur" alt="Espace de travail des bureaux XYZ" class="w-full rounded-xl shadow-lg">
                         </div>
-                         <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/E3F2FD/0D47A1?text=Image+3" alt="Image 3" class="w-full rounded-xl shadow-lg">
+                        <div class="carousel-item">
+                           <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Image+3" alt="Image 3" class="w-full rounded-xl shadow-lg">
                         </div>
                     </div>
                     <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev">&#10094;</button>
@@ -229,18 +239,18 @@
                 <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">Bibliothèque du Quartier Latin</h2>
 
-                 <!-- CARROUSEL PHOTO -->
+                    <!-- CARROUSEL PHOTO -->
                 <div class="carousel-container relative">
                     <div class="carousel-wrapper flex">
                         <!-- Remplacez les liens d'image ci-dessous par les vôtres -->
                         <div class="carousel-item">
-                            <img src="images/musee-facade.jpg" alt="Façade du musée de l'art moderne" class="w-full rounded-xl shadow-lg">
+                            <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Bibliotheque+Facade" alt="Façade du musée de l'art moderne" class="w-full rounded-xl shadow-lg">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/musee-galerie.jpg" alt="Galerie d'exposition du musée" class="w-full rounded-xl shadow-lg">
+                            <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Bibliotheque+Interieur" alt="Galerie d'exposition du musée" class="w-full rounded-xl shadow-lg">
                         </div>
-                         <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/E3F2FD/0D47A1?text=Image+3" alt="Image 3" class="w-full rounded-xl shadow-lg">
+                        <div class="carousel-item">
+                           <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Image+3" alt="Image 3" class="w-full rounded-xl shadow-lg">
                         </div>
                     </div>
                     <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev">&#10094;</button>
@@ -272,12 +282,12 @@
                     <h3 class="text-2xl font-semibold text-center mb-6">L'Équipe</h3>
                     <div class="flex flex-wrap justify-center gap-8">
                         <div class="text-center">
-                            <img src="images/equipe1.jpg" alt="Photo de l'architecte" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
+                            <img src="https://placehold.co/128x128/E3F2FD/0D47A1?text=Photo+1" alt="Photo de l'architecte" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
                             <p class="font-semibold text-lg">Prénom Nom 1</p>
                             <p class="text-sm text-gray-500">Architecte associé</p>
                         </div>
                         <div class="text-center">
-                            <img src="images/equipe2.jpg" alt="Photo de l'architecte" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
+                            <img src="https://placehold.co/128x128/FCE4EC/880E4F?text=Photo+2" alt="Photo de l'architecte" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
                             <p class="font-semibold text-lg">Prénom Nom 2</p>
                             <p class="text-sm text-gray-500">Architecte chef de projet</p>
                         </div>
@@ -336,7 +346,6 @@
                     navMain.classList.remove('hidden');
                     if (navHome) navHome.classList.add('hidden');
                 }
-
             };
 
             const setActiveLink = (pageId) => {
@@ -385,8 +394,6 @@
 
                     showPage(targetPage);
                     setActiveLink(targetPage);
-
-                    initCarousels();
                 }
             });
 
@@ -395,63 +402,74 @@
                     const wrapper = container.querySelector('.carousel-wrapper');
                     const prevBtn = container.querySelector('[data-direction="prev"]');
                     const nextBtn = container.querySelector('[data-direction="next"]');
-                    let currentIndex = 0;
-                    const items = wrapper.querySelectorAll('.carousel-item');
-                    const totalItems = items.length;
+                    const itemWidth = wrapper.offsetWidth;
 
-                    const updateCarousel = () => {
-                        const offset = -currentIndex * 100;
-                        wrapper.style.transform = `translateX(${offset}%)`;
-                    };
-
-                    if(nextBtn){
+                    // Gère le clic sur le bouton "Suivant"
+                    if (nextBtn) {
                         nextBtn.addEventListener('click', () => {
-                            if (currentIndex < totalItems - 1) {
-                                currentIndex++;
-                            } else {
-                                currentIndex = 0;
-                            }
-                            updateCarousel();
+                            // Fait défiler le carrousel vers la droite d'une image
+                            wrapper.scrollBy({
+                                left: itemWidth,
+                                behavior: 'smooth'
+                            });
                         });
                     }
 
-                    if(prevBtn){
+                    // Gère le clic sur le bouton "Précédent"
+                    if (prevBtn) {
                         prevBtn.addEventListener('click', () => {
-                            if (currentIndex > 0) {
-                                currentIndex--;
-                            } else {
-                                currentIndex = totalItems - 1;
-                            }
-                            updateCarousel();
+                            // Fait défiler le carrousel vers la gauche d'une image
+                            wrapper.scrollBy({
+                                left: -itemWidth,
+                                behavior: 'smooth'
+                            });
                         });
                     }
+                    
+                    // Gère la navigation par balayage (swipe) sur mobile
+                    let isDragging = false;
+                    let startX = 0;
+                    let scrollLeft = 0;
 
-                    let startX;
-                    if(wrapper){
-                        wrapper.addEventListener('touchstart', (e) => {
-                            startX = e.touches[0].clientX;
-                        });
-                        wrapper.addEventListener('touchmove', (e) => {
-                            e.preventDefault();
-                        });
-                        wrapper.addEventListener('touchend', (e) => {
-                            const endX = e.changedTouches[0].clientX;
-                            if (startX - endX > 50) {
-                                if (currentIndex < totalItems - 1) {
-                                    currentIndex++;
-                                } else {
-                                    currentIndex = 0;
-                                }
-                            } else if (startX - endX < -50) {
-                                if (currentIndex > 0) {
-                                    currentIndex--;
-                                } else {
-                                    currentIndex = totalItems - 1;
-                                }
-                            }
-                            updateCarousel();
-                        });
-                    }
+                    wrapper.addEventListener('mousedown', (e) => {
+                        isDragging = true;
+                        startX = e.pageX - wrapper.offsetLeft;
+                        scrollLeft = wrapper.scrollLeft;
+                    });
+
+                    wrapper.addEventListener('mouseleave', () => {
+                        isDragging = false;
+                    });
+
+                    wrapper.addEventListener('mouseup', () => {
+                        isDragging = false;
+                    });
+
+                    wrapper.addEventListener('mousemove', (e) => {
+                        if (!isDragging) return;
+                        e.preventDefault();
+                        const x = e.pageX - wrapper.offsetLeft;
+                        const walk = (x - startX) * 1.5; // Multiplier pour une vitesse de défilement plus rapide
+                        wrapper.scrollLeft = scrollLeft - walk;
+                    });
+
+                    // Événements tactiles pour les appareils mobiles
+                    wrapper.addEventListener('touchstart', (e) => {
+                        isDragging = true;
+                        startX = e.touches[0].pageX - wrapper.offsetLeft;
+                        scrollLeft = wrapper.scrollLeft;
+                    });
+
+                    wrapper.addEventListener('touchend', () => {
+                        isDragging = false;
+                    });
+
+                    wrapper.addEventListener('touchmove', (e) => {
+                        if (!isDragging) return;
+                        const x = e.touches[0].pageX - wrapper.offsetLeft;
+                        const walk = (x - startX) * 1.5;
+                        wrapper.scrollLeft = scrollLeft - walk;
+                    });
                 });
             };
 
@@ -460,6 +478,7 @@
                 const currentPage = window.location.hash.substring(1) || 'home';
                 showPage(currentPage);
                 setActiveLink(currentPage);
+                initCarousels();
             });
 
             // Afficher la page par défaut au chargement
@@ -474,11 +493,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
