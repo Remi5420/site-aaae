@@ -11,7 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #f7f7f7;
+            background-color: #ffffff; /* Fond blanc pour toutes les pages */
             color: #333;
             scroll-behavior: smooth;
         }
@@ -70,12 +70,17 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin=""/>
+
+    <!-- JS Leaflet.js -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20n6c9Lp+b/d+E2/S/9G+V+U+b+Q+A+t+Z+O+S+N+Y="
+        crossorigin=""></script>
 </head>
 <body class="flex flex-col min-h-screen">
 
     <!-- Barre de navigation - Reste visible sur toutes les pages -->
     <nav class="sticky top-0 z-50 bg-white shadow-sm py-4">
-        <div class="container mx-auto px-4 flex justify-center space-x-8 md:space-x-12">
+        <div class="container mx-auto px-4 flex justify-center space-x-4 md:space-x-6">
             <a href="#home" data-page="home" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
             <a href="#portfolio" data-page="portfolio" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
             <a href="#map-projects" data-page="map-projects" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Carte des projets</a>
@@ -320,13 +325,8 @@
         </div>
     </footer>
 
-    <!-- JS Leaflet.js -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20n6c9Lp+b/d+E2/S/9G+V+U+b+Q+A+t+Z+O+S+N+Y="
-        crossorigin=""></script>
-
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        window.onload = () => {
             const pageSections = document.querySelectorAll('.page-section');
             const projectItems = document.querySelectorAll('.project-item');
             const filterButtons = document.querySelectorAll('.filter-btn');
@@ -344,16 +344,12 @@
                 });
 
                 if (pageId === 'map-projects') {
-                    // Utiliser un setTimeout pour s'assurer que le conteneur de la carte est
-                    // bien rendu et a des dimensions avant d'initialiser Leaflet.
-                    setTimeout(() => {
-                        // Si la carte existe déjà, on recalcule sa taille. Sinon, on l'initialise.
-                        if (map) {
-                            map.invalidateSize();
-                        } else {
-                            initMap();
-                        }
-                    }, 100); // Un délai de 100ms est généralement suffisant
+                    // On vérifie si la carte existe déjà avant de l'initialiser
+                    if (map) {
+                        map.invalidateSize();
+                    } else {
+                        initMap();
+                    }
                 }
             };
 
@@ -527,7 +523,7 @@
             initCarousels();
             // Appliquer le filtre "Tous" par défaut
             filterProjects('all');
-        });
+        };
     </script>
 </body>
 </html>
