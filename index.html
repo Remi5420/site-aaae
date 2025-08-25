@@ -88,7 +88,7 @@
         <!-- Section de la page d'accueil avec le logo -->
         <section id="home" data-page="home" class="page-section flex items-center justify-center min-h-screen">
             <div class="text-center p-8">
-                <img src="images/logo.jpeg" alt="Logo de l'agence Alter Ego" class="mx-auto w-64 md:w-80 mb-6">
+                <img src="images/logo.jpg" alt="Logo de l'agence Alter Ego" class="mx-auto w-64 md:w-80 mb-6">
                 <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
                     Alter Ego
                 </h1>
@@ -151,7 +151,7 @@
         <section id="project-1" data-page="project-1" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto max-w-4xl">
                 <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">43 rue d'Enghien 75010 PARIS</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Maison O'Connor</h2>
 
                 <!-- CARROUSEL PHOTO -->
                 <div class="carousel-container relative">
@@ -365,7 +365,8 @@
                 e.preventDefault(); 
                 const targetPage = e.currentTarget.dataset.page;
                 
-                history.pushState(null, '', e.currentTarget.href);
+                // Mettre à jour l'URL sans recharger la page
+                window.location.hash = targetPage;
                 
                 showPage(targetPage);
                 setActiveLink(targetPage);
@@ -521,5 +522,3 @@
 
 </body>
 </html>
-
-
