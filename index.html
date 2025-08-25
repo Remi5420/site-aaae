@@ -344,12 +344,16 @@
                 });
 
                 if (pageId === 'map-projects') {
-                    // Si la carte existe déjà, on recalcule sa taille. Sinon, on l'initialise.
-                    if (map) {
-                        map.invalidateSize();
-                    } else {
-                        initMap();
-                    }
+                    // Utiliser un setTimeout pour s'assurer que le conteneur de la carte est
+                    // bien rendu et a des dimensions avant d'initialiser Leaflet.
+                    setTimeout(() => {
+                        // Si la carte existe déjà, on recalcule sa taille. Sinon, on l'initialise.
+                        if (map) {
+                            map.invalidateSize();
+                        } else {
+                            initMap();
+                        }
+                    }, 100); // Un délai de 100ms est généralement suffisant
                 }
             };
 
