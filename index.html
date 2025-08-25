@@ -6,6 +6,9 @@
     <title>Agence d'Architecture</title>
     <!-- Tailwind CSS CDN pour un design responsive et moderne -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inclure la bibliothèque Leaflet.js pour la carte -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha2d-4uU23+p/Q4IeL34n4d+6r4XQoK13oYxL/N7Qe+4uK1+5m" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha2d-qE25L23jA/480t9+h+4d+p6uQzR4u+4k/6f2eF5+4y2+3k/6p+4d+p6uQzR4u+4k/6p" crossorigin=""></script>
     <style>
         /* Police Montserrat pour correspondre au logo */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
@@ -19,13 +22,12 @@
             font-weight: 600;
             border-bottom: 2px solid #000;
         }
-        /* Style pour la carte Google Maps */
-        .map-container {
+        /* Style pour la carte */
+        #map {
             height: 600px;
             width: 100%;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
             border-radius: 0.5rem; /* rounded-lg */
-            overflow: hidden;
         }
         /* Styles pour le carrousel */
         .carousel-container {
@@ -157,18 +159,8 @@
         <section id="map-projects" data-page="map-projects" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8">
             <div class="container mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Carte de nos Projets</h2>
-                <!-- Nouveau conteneur de la carte utilisant une iframe Google Maps -->
-                <div class="map-container">
-                    <iframe
-                        width="100%"
-                        height="100%"
-                        style="border:0;"
-                        loading="lazy"
-                        allowfullscreen
-                        referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps/embed/v1/place?key=&q=Paris,France">
-                    </iframe>
-                </div>
+                <!-- Conteneur de la carte -->
+                <div id="map"></div>
             </div>
         </section>
 
@@ -482,11 +474,36 @@
                 });
             };
 
+            const initMap = () => {
+                const mapElement = document.getElementById('map');
+                if (mapElement && mapElement.classList.contains('page-section') && !mapElement.classList.contains('hidden')) {
+                    const map = L.map('map').setView([48.8566, 2.3522], 13); // Centrer sur Paris
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    const projects = [
+                        { coords: [48.8738, 2.2950], title: 'Appartement Haussmannien', description: 'Rénovation d\'une résidence privée.' },
+                        { coords: [48.8687, 2.3080], title: 'Boutique de Luxe Parisienne', description: 'Espace commercial.' },
+                        { coords: [48.8475, 2.3450], title: 'Bibliothèque du Quartier Latin', description: 'Bâtiment public.' }
+                    ];
+
+                    projects.forEach(project => {
+                        L.marker(project.coords).addTo(map)
+                            .bindPopup(`<strong>${project.title}</strong><br>${project.description}`);
+                    });
+                }
+            };
+
             // Gérer les boutons retour/avance du navigateur
             window.addEventListener('popstate', () => {
                 const currentPage = window.location.hash.substring(1) || 'home';
                 showPage(currentPage);
                 setActiveLink(currentPage);
+                if (currentPage === 'map-projects') {
+                    initMap();
+                }
             });
 
             // Afficher la page par défaut au chargement
@@ -494,6 +511,10 @@
             showPage(initialPage);
             setActiveLink(initialPage);
             initCarousels();
+            if (initialPage === 'map-projects') {
+                initMap();
+            }
+
             // Appliquer le filtre "Tous" par défaut
             filterProjects('all');
         };
