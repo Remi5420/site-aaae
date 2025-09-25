@@ -13,13 +13,13 @@
 <body class="flex flex-col min-h-screen">
 
     <header id="nav-main" class="sticky top-0 z-50 bg-white shadow-sm py-4 hidden" role="navigation" aria-label="Navigation principale">
-        <div class="container mx-auto px-4 flex justify-center space-x-4 md:space-x-6">
-            <a href="#home" data-page="home" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
-            <a href="#about" data-page="about" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
-            <a href="#portfolio" data-page="portfolio" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
-            <a href="#contact" data-page="contact" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
-        </div>
-    </header>
+    <div class="container mx-auto px-4 flex justify-center space-x-4 md:space-x-6">
+        <a href="#home" data-page="home" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
+        <a href="#about" data-page="about" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
+        <a href="#portfolio" data-page="portfolio" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
+        <a href="#instagram" data-page="instagram" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Instagram</a> <a href="#contact" data-page="contact" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
+    </div>
+</header>
 
     <main class="flex-grow">
        <section id="home" data-page="home" class="page-section flex flex-col items-center justify-center min-h-screen" role="region" aria-label="Page d'accueil de l'agence">
@@ -38,14 +38,14 @@
             ATELIER D'ARCHITECTURE
         </p>
         
-        <nav id="nav-home" class="mt-8" role="navigation" aria-label="Menu de navigation de la page d'accueil">
-            <div class="flex justify-center space-x-2 md:space-x-4">
-                <a href="#home" data-page="home" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
-                <a href="#about" data-page="about" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
-                <a href="#portfolio" data-page="portfolio" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
-                <a href="#contact" data-page="contact" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
-            </div>
-        </nav>
+       <nav id="nav-home" class="mt-8" role="navigation" aria-label="Menu de navigation de la page d'accueil">
+    <div class="flex justify-center space-x-2 md:space-x-4">
+        <a href="#home" data-page="home" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
+        <a href="#about" data-page="about" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
+        <a href="#portfolio" data-page="portfolio" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
+        <a href="#instagram" data-page="instagram" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Instagram</a> <a href="#contact" data-page="contact" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
+    </div>
+</nav>
     </div>
 </section>
 
@@ -257,6 +257,18 @@
                 </div>
             </div>
         </section>
+
+        <section id="instagram" data-page="instagram" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Nos dernières publications Instagram">
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Notre Fil Instagram</h2>
+        
+        <div id="instagram-feed" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <p class="text-center text-gray-500 col-span-full">Chargement des dernières publications...</p>
+        </div>
+        
+    </div>
+</section>
+        
     </main>
 
     <footer class="bg-white-900 text-white py-6 mt-12" role="contentinfo">
@@ -269,6 +281,7 @@
 
 </body>
 </html>
+
 
 
 
