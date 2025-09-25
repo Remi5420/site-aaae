@@ -22,29 +22,31 @@
     </header>
 
     <main class="flex-grow">
-        <section id="home" data-page="home" class="page-section flex flex-col items-center justify-center min-h-screen" role="region" aria-label="Page d'accueil de l'agence">
-            <div class="text-center p-8">
-                 <video autoplay muted loop playsinline class="w-1/2 h-full object-cover">
-        <source src="images/logoaaae.mp4" type="video/mp4">
-        <source src="images/logoaaae.webm" type="video/webm">
-        Votre navigateur ne supporte pas la vidéo.
-    </video>
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
-                    Alter Ego
-                </h1>
-                <p class="mt-4 text-xl md:text-2xl text-gray-600 font-light">
-                    ATELIER D'ARCHITECTURE
-                </p>
-                <nav id="nav-home" class="mt-8" role="navigation" aria-label="Menu de navigation de la page d'accueil">
-                    <div class="flex justify-center space-x-2 md:space-x-4">
-                        <a href="#home" data-page="home" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
-                        <a href="#about" data-page="about" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
-                        <a href="#portfolio" data-page="portfolio" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
-                        <a href="#contact" data-page="contact" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
-                    </div>
-                </nav>
+        <section id="home" data-page="home" class="page-section flex flex-col items-center justify-center min-h-screen relative" role="region" aria-label="Page d'accueil de l'agence">
+    <div class="text-center p-8 z-10">
+        
+        <video autoplay muted loop playsinline 
+               class="mx-auto w-64 md:w-80 mb-6 rounded-full object-cover">
+               <source src="votre-video.mp4" type="video/mp4">
+            <source src="votre-video.webm" type="video/webm">
+            Votre navigateur ne supporte pas la vidéo.
+        </video>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
+            Alter Ego
+        </h1>
+        <p class="mt-4 text-xl md:text-2xl text-gray-600 font-light">
+            ATELIER D'ARCHITECTURE
+        </p>
+        <nav id="nav-home" class="mt-8" role="navigation" aria-label="Menu de navigation de la page d'accueil">
+            <div class="flex justify-center space-x-2 md:space-x-4">
+                <a href="#home" data-page="home" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
+                <a href="#about" data-page="about" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
+                <a href="#portfolio" data-page="portfolio" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
+                <a href="#contact" data-page="contact" class="nav-link text-base font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
             </div>
-        </section>
+        </nav>
+    </div>
+</section>
 
         <section id="portfolio" data-page="portfolio" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Notre portfolio de projets">
             <div class="container mx-auto">
@@ -233,6 +235,7 @@
 
 </body>
 </html>
+
 
 
 
