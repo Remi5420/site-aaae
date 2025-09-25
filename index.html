@@ -1,230 +1,234 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alter Ego - Atelier d'Architecture</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alter Ego - Atelier d'Architecture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <header id="nav-main" class="sticky top-0 z-50 bg-white shadow-sm py-4 hidden" role="navigation" aria-label="Navigation principale">
-        <div class="container mx-auto px-4 flex justify-center space-x-4 md:space-x-6">
-            <a href="#home" data-page="home" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
-            <a href="#about" data-page="about" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
-            <a href="#portfolio" data-page="portfolio" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
-            <a href="#contact" data-page="contact" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
-        </div>
-    </header>
+    <header id="nav-main" class="sticky top-0 z-50 bg-white shadow-sm py-4" role="navigation" aria-label="Navigation principale">
+        <div class="container mx-auto px-4 flex justify-center space-x-4 md:space-x-6">
+            <a href="#home" data-page="home" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Accueil</a>
+            <a href="#about" data-page="about" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Présentation</a>
+            <a href="#portfolio" data-page="portfolio" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Projets</a>
+            <a href="#contact" data-page="contact" class="nav-link text-lg md:text-xl font-medium text-gray-700 hover:text-black transition-colors duration-300">Contact</a>
+        </div>
+    </header>
 
-    <main class="flex-grow">
-        
-                <section id="home" data-page="home" 
-         class="page-section flex flex-col items-center justify-center min-h-screen relative" 
-         role="region" aria-label="Page d'accueil de l'agence">
+    <main class="flex-grow">
+        
+        <section id="home" data-page="home" 
+           class="page-section flex flex-col items-center justify-center min-h-screen relative" 
+           role="region" aria-label="Page d'accueil de l'agence">
             
             <div class="text-center p-8 z-10">
                 
-                <video autoplay muted loop playsinline 
-                    class="block mx-auto w-64 md:w-80 mb-6 rounded-full object-cover">
-                    <source src="images/logoaaae.mp4" type="video/mp4">
-                    <source src="images/logoaaae.webm" type="video/webm">
-                </video>
+                <video autoplay muted loop playsinline 
+                    class="block mx-auto w-64 md:w-80 mb-6 rounded-full object-cover">
+                    <source src="images/logoaaae.mp4" type="video/mp4">
+                    <source src="images/logoaaae.webm" type="video/webm">
+                </video>
                 
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">...</h1>
-                <p class="mt-4 text-xl md:text-2xl text-gray-600 font-light">...</p>
-                <nav id="nav-home" class="mt-8" role="navigation" aria-label="Menu de navigation de la page d'accueil">
-                    <div class="flex justify-center space-x-2 md:space-x-4">...</div>
-                </nav>
-            </div>
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">ALTER EGO</h1>
+                <p class="mt-4 text-xl md:text-2xl text-gray-600 font-light">Atelier d'Architecture</p>
+                
+                <nav id="nav-home" class="mt-8" role="navigation" aria-label="Menu de navigation de la page d'accueil">
+                    <div class="flex justify-center space-x-2 md:space-x-4">
+                        <a href="#about" class="bg-gray-800 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-black transition duration-300">Découvrir</a>
+                        <a href="#portfolio" class="bg-white text-gray-800 py-3 px-6 rounded-full text-lg font-semibold border border-gray-300 hover:bg-gray-100 transition duration-300">Projets</a>
+                    </div>
+                </nav>
+            </div>
         </section>
-                <section id="portfolio" data-page="portfolio" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Notre portfolio de projets">
-                        <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nos Projets</h2>
-                <div class="flex justify-center space-x-4 mb-8">
-                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200 active" data-filter="all" aria-pressed="true">Tous</button>
-                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Ravalement" aria-pressed="false">Ravalement</button>
-                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Couverture" aria-pressed="false">Couverture</button>
-                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Caves" aria-pressed="false">Caves</button>
-                </div>
-                <div class="projects-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <a href="#project-1" data-page="project-1" data-category="Ravalement" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <img src="images/ENGHIEN (1).jpeg" alt="Vue de la façade sur rue d'un immeuble haussmannien" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="text-center text-white">
-                                <h3 class="text-xl font-semibold mt-2">43 rue d'Enghien 75010</h3>
-                                <p class="text-sm font-light mt-1">Ravalement de la façade sur rue et refection de couverture</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#project-2" data-page="project-2" data-category="Couverture" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <img src="images/EM (3).jpeg" alt="Façade d'un bâtiment sur la Villa Eugène Manuel" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="text-center text-white">
-                                <h3 class="text-xl font-semibold mt-2">7bis Villa Eugène Manuel 75016</h3>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#project-3" data-page="project-3" data-category="Caves" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <img src="https://placehold.co/600x600/E8F5E9/1B5E20?text=Projet+3" alt="Image d'illustration pour le projet Bibliothèque du Quartier Latin" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="text-center text-white">
-                                <h3 class="text-xl font-semibold mt-2">Bibliothèque du Quartier Latin</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
 
-        <section id="project-1" data-page="project-1" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Détails du projet '43 rue d'Enghien'">
+        <section id="portfolio" data-page="portfolio" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Notre portfolio de projets">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nos Projets</h2>
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200 active" data-filter="all" aria-pressed="true">Tous</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Ravalement" aria-pressed="false">Ravalement</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Couverture" aria-pressed="false">Couverture</button>
+                    <button class="filter-btn py-2 px-4 rounded-full text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors duration-200" data-filter="Caves" aria-pressed="false">Caves</button>
+                </div>
+                <div class="projects-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="#project-1" data-page="project-1" data-category="Ravalement" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                        <img src="images/ENGHIEN (1).jpeg" alt="Vue de la façade sur rue d'un immeuble haussmannien" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold mt-2">43 rue d'Enghien 75010</h3>
+                                <p class="text-sm font-light mt-1">Ravalement de la façade sur rue et refection de couverture</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#project-2" data-page="project-2" data-category="Couverture" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                        <img src="images/EM (3).jpeg" alt="Façade d'un bâtiment sur la Villa Eugène Manuel" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold mt-2">7bis Villa Eugène Manuel 75016</h3>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#project-3" data-page="project-3" data-category="Caves" class="project-item group relative block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x600/E8F5E9/1B5E20?text=Projet+3" alt="Image d'illustration pour le projet Bibliothèque du Quartier Latin" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold mt-2">Bibliothèque du Quartier Latin</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-1" data-page="project-1" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Détails du projet '43 rue d'Enghien'">
             <div class="container mx-auto max-w-4xl">
-                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">43 rue d'Enghien 75010</h2>
-                <div class="carousel-container relative">
-                    <div class="carousel-wrapper flex" role="group" aria-label="Images du projet">
-                        <div class="carousel-item">
-                            <img src="images/ENGHIEN (1).jpeg" alt="Vue façade rue de l'immeuble haussmannien." class="w-full rounded-xl shadow-lg">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/ENGHIEN2.png" alt="Vue intérieure des travaux." class="w-full rounded-xl shadow-lg">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/ENGHIEN3.png" alt="Vue détaillée des ornements de la façade." class="w-full rounded-xl shadow-lg">
-                        </div>
-                    </div>
-                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev" aria-label="Image précédente">&#10094;</button>
-                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next" aria-label="Image suivante">&#10095;</button>
-                </div>
-                <div class="mt-8 prose max-w-none text-gray-700">
-                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
-                    <ul class="list-disc list-inside space-y-2 mb-6">
-                        <li><strong>Montant :</strong> xxx xxx€</li>
-                        <li><strong>Lieu :</strong> Paris 10e arrondissement, France</li>
-                        <li><strong>Année :</strong> 2024</li>
-                    </ul>
-                    <p class="leading-relaxed">Projet de ravalement de la façade sur rue d'un immeuble haussmannien. Les travaux comprennent un nettoyage des façades, la réparation des éléments de modénature et une remise en peinture. Le projet est soumis à l'approbation des Bâtiments de France.</p>
-                    <p class="leading-relaxed">Une réfection de la couverture est également prévue, avec le remplacement des ardoises endommagées et la mise aux normes de l'isolation.</p>
-                </div>
-            </div>
-        </section>
+                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">43 rue d'Enghien 75010</h2>
+                <div class="carousel-container relative">
+                    <div class="carousel-wrapper flex" role="group" aria-label="Images du projet">
+                        <div class="carousel-item">
+                            <img src="images/ENGHIEN (1).jpeg" alt="Vue façade rue de l'immeuble haussmannien." class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/ENGHIEN2.png" alt="Vue intérieure des travaux." class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/ENGHIEN3.png" alt="Vue détaillée des ornements de la façade." class="w-full rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev" aria-label="Image précédente">&#10094;</button>
+                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next" aria-label="Image suivante">&#10095;</button>
+                </div>
+                <div class="mt-8 prose max-w-none text-gray-700">
+                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        <li><strong>Montant :</strong> xxx xxx€</li>
+                        <li><strong>Lieu :</strong> Paris 10e arrondissement, France</li>
+                        <li><strong>Année :</strong> 2024</li>
+                    </ul>
+                    <p class="leading-relaxed">Projet de ravalement de la façade sur rue d'un immeuble haussmannien. Les travaux comprennent un nettoyage des façades, la réparation des éléments de modénature et une remise en peinture. Le projet est soumis à l'approbation des Bâtiments de France.</p>
+                    <p class="leading-relaxed">Une réfection de la couverture est également prévue, avec le remplacement des ardoises endommagées et la mise aux normes de l'isolation.</p>
+                </div>
+            </div>
+        </section>
 
-        <section id="project-2" data-page="project-2" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Détails du projet 'Boutique de Luxe Parisienne'">
+        <section id="project-2" data-page="project-2" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Détails du projet 'Boutique de Luxe Parisienne'">
             <div class="container mx-auto max-w-4xl">
-                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Boutique de Luxe Parisienne</h2>
-                <div class="carousel-container relative">
-                    <div class="carousel-wrapper flex" role="group" aria-label="Images du projet">
-                        <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Boutique+Exterieur" alt="Vue extérieure de la boutique de luxe." class="w-full rounded-xl shadow-lg">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Boutique+Interieur" alt="Vue intérieure de la boutique." class="w-full rounded-xl shadow-lg">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Image+3" alt="Troisième image de la boutique." class="w-full rounded-xl shadow-lg">
-                        </div>
-                    </div>
-                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev" aria-label="Image précédente">&#10094;</button>
-                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next" aria-label="Image suivante">&#10095;</button>
-                </div>
-                <div class="mt-8 prose max-w-none text-gray-700">
-                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
-                    <ul class="list-disc list-inside space-y-2 mb-6">
-                        <li><strong>Montant :</strong> 2 100 000€</li>
-                        <li><strong>Lieu :</strong> Paris 8e arrondissement, France</li>
-                        <li><strong>Surface :</strong> 1200 m²</li>
-                        <li><strong>Année :</strong> 2022</li>
-                    </ul>
-                    <p class="leading-relaxed">Nous avons conçu cette boutique de luxe pour une marque de haute couture renommée. Le projet visait à créer un espace qui incarne l'élégance et l'exclusivité de la marque. Nous avons utilisé des matériaux nobles comme le marbre, le bois de noyer et le laiton pour créer une atmosphère sophistiquée.</p>
-                    <p class="leading-relaxed">Chaque détail, de l'éclairage aux présentoirs, a été soigneusement pensé pour mettre en valeur les produits et offrir une expérience d'achat immersive. Les vitrines ont été conçues comme des œuvres d'art, attirant les passants et les invitant à découvrir l'univers de la marque.</p>
-                </div>
-            </div>
-        </section>
+                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Boutique de Luxe Parisienne</h2>
+                <div class="carousel-container relative">
+                    <div class="carousel-wrapper flex" role="group" aria-label="Images du projet">
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Boutique+Exterieur" alt="Vue extérieure de la boutique de luxe." class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Boutique+Interieur" alt="Vue intérieure de la boutique." class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/FCE4EC/880E4F?text=Image+3" alt="Troisième image de la boutique." class="w-full rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev" aria-label="Image précédente">&#10094;</button>
+                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next" aria-label="Image suivante">&#10095;</button>
+                </div>
+                <div class="mt-8 prose max-w-none text-gray-700">
+                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        <li><strong>Montant :</strong> 2 100 000€</li>
+                        <li><strong>Lieu :</strong> Paris 8e arrondissement, France</li>
+                        <li><strong>Surface :</strong> 1200 m²</li>
+                        <li><strong>Année :</strong> 2022</li>
+                    </ul>
+                    <p class="leading-relaxed">Nous avons conçu cette boutique de luxe pour une marque de haute couture renommée. Le projet visait à créer un espace qui incarne l'élégance et l'exclusivité de la marque. Nous avons utilisé des matériaux nobles comme le marbre, le bois de noyer et le laiton pour créer une atmosphère sophistiquée.</p>
+                    <p class="leading-relaxed">Chaque détail, de l'éclairage aux présentoirs, a été soigneusement pensé pour mettre en valeur les produits et offrir une expérience d'achat immersive. Les vitrines ont été conçues comme des œuvres d'art, attirant les passants et les invitant à découvrir l'univers de la marque.</p>
+                </div>
+            </div>
+        </section>
 
-        <section id="project-3" data-page="project-3" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Détails du projet 'Bibliothèque du Quartier Latin'">
+        <section id="project-3" data-page="project-3" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Détails du projet 'Bibliothèque du Quartier Latin'">
             <div class="container mx-auto max-w-4xl">
-                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Bibliothèque du Quartier Latin</h2>
-                <div class="carousel-container relative">
-                    <div class="carousel-wrapper flex" role="group" aria-label="Images du projet">
-                        <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Bibliotheque+Facade" alt="Façade de la nouvelle bibliothèque du Quartier Latin." class="w-full rounded-xl shadow-lg">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Bibliotheque+Interieur" alt="Vue intérieure de la bibliothèque avec ses rayonnages de livres." class="w-full rounded-xl shadow-lg">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Image+3" alt="Troisième image de la bibliothèque." class="w-full rounded-xl shadow-lg">
-                        </div>
-                    </div>
-                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev" aria-label="Image précédente">&#10094;</button>
-                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next" aria-label="Image suivante">&#10095;</button>
-                </div>
-                <div class="mt-8 prose max-w-none text-gray-700">
-                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
-                    <ul class="list-disc list-inside space-y-2 mb-6">
-                        <li><strong>Montant :</strong> 8 500 000€</li>
-                        <li><strong>Lieu :</strong> Paris 5e arrondissement, France</li>
-                        <li><strong>Surface :</strong> 5000 m²</li>
-                        <li><strong>Année :</strong> 2021</li>
-                    </ul>
-                    <p class="leading-relaxed">Ce projet de bibliothèque publique dans le Quartier Latin visait à créer un espace d'apprentissage et de communauté moderne qui respecte le patrimoine architectural du quartier. Le bâtiment, avec sa façade en pierre et ses grandes fenêtres, est une exploration de la lumière et de l'espace.</p>
-                </div>
-            </div>
-        </section>
+                <a href="#portfolio" data-page="portfolio" class="go-back-link text-gray-600 hover:text-black transition-colors duration-300 mb-8 inline-block">&larr; Retour aux projets</a>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Bibliothèque du Quartier Latin</h2>
+                <div class="carousel-container relative">
+                    <div class="carousel-wrapper flex" role="group" aria-label="Images du projet">
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Bibliotheque+Facade" alt="Façade de la nouvelle bibliothèque du Quartier Latin." class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Bibliotheque+Interieur" alt="Vue intérieure de la bibliothèque avec ses rayonnages de livres." class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/1000x600/E8F5E9/1B5E20?text=Image+3" alt="Troisième image de la bibliothèque." class="w-full rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn left-2 md:left-4" data-direction="prev" aria-label="Image précédente">&#10094;</button>
+                    <button class="carousel-nav-btn right-2 md:right-4" data-direction="next" aria-label="Image suivante">&#10095;</button>
+                </div>
+                <div class="mt-8 prose max-w-none text-gray-700">
+                    <h3 class="text-2xl font-semibold mb-4">Détails du projet</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        <li><strong>Montant :</strong> 8 500 000€</li>
+                        <li><strong>Lieu :</strong> Paris 5e arrondissement, France</li>
+                        <li><strong>Surface :</strong> 5000 m²</li>
+                        <li><strong>Année :</strong> 2021</li>
+                    </ul>
+                    <p class="leading-relaxed">Ce projet de bibliothèque publique dans le Quartier Latin visait à créer un espace d'apprentissage et de communauté moderne qui respecte le patrimoine architectural du quartier. Le bâtiment, avec sa façade en pierre et ses grandes fenêtres, est une exploration de la lumière et de l'espace.</p>
+                </div>
+            </div>
+        </section>
 
-        <section id="about" data-page="about" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="À propos de l'agence">
+        <section id="about" data-page="about" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="À propos de l'agence">
             <div class="container mx-auto max-w-4xl text-gray-700">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">À Propos de l'Agence</h2>
-                <p class="text-lg leading-relaxed mb-6">
-                    Fondée en [Année de fondation], notre agence d'architecture s'engage à créer des espaces qui allient esthétisme, fonctionnalité et durabilité. Nous croyons que chaque projet est une histoire unique, et nous travaillons en étroite collaboration avec nos clients pour transformer leurs visions en réalités architecturales. Notre démarche se concentre sur l'innovation, le respect de l'environnement et l'utilisation de matériaux locaux.
-                </p>
-                <div class="mt-12">
-                    <h3 class="text-2xl font-semibold text-center mb-6">L'Équipe</h3>
-                    <div class="flex flex-wrap justify-center gap-8">
-                        <div class="text-center">
-                            <img src="https://placehold.co/128x128/E3F2FD/0D47A1?text=Photo+1" alt="Photo de l'architecte Prénom Nom 1" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
-                            <p class="font-semibold text-lg">Prénom Nom 1</p>
-                            <p class="text-sm text-gray-500">Architecte associé</p>
-                        </div>
-                        <div class="text-center">
-                            <img src="https://placehold.co/128x128/FCE4EC/880E4F?text=Photo+2" alt="Photo de l'architecte Prénom Nom 2" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
-                            <p class="font-semibold text-lg">Prénom Nom 2</p>
-                            <p class="text-sm text-gray-500">Architecte chef de projet</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">À Propos de l'Agence</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    Fondée en [Année de fondation], notre agence d'architecture s'engage à créer des espaces qui allient esthétisme, fonctionnalité et durabilité. Nous croyons que chaque projet est une histoire unique, et nous travaillons en étroite collaboration avec nos clients pour transformer leurs visions en réalités architecturales. Notre démarche se concentre sur l'innovation, le respect de l'environnement et l'utilisation de matériaux locaux.
+                </p>
+                <div class="mt-12">
+                    <h3 class="text-2xl font-semibold text-center mb-6">L'Équipe</h3>
+                    <div class="flex flex-wrap justify-center gap-8">
+                        <div class="text-center">
+                            <img src="https://placehold.co/128x128/E3F2FD/0D47A1?text=Photo+1" alt="Photo de l'architecte Prénom Nom 1" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
+                            <p class="font-semibold text-lg">Prénom Nom 1</p>
+                            <p class="text-sm text-gray-500">Architecte associé</p>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://placehold.co/128x128/FCE4EC/880E4F?text=Photo+2" alt="Photo de l'architecte Prénom Nom 2" class="w-32 h-32 rounded-full mx-auto mb-2 shadow-lg">
+                            <p class="font-semibold text-lg">Prénom Nom 2</p>
+                            <p class="text-sm text-gray-500">Architecte chef de projet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <section id="contact" data-page="contact" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Informations de contact de l'agence">
+        <section id="contact" data-page="contact" class="page-section hidden pt-12 md:pt-20 pb-16 px-4 md:px-8" role="region" aria-label="Informations de contact de l'agence">
             <div class="container mx-auto max-w-2xl text-gray-700">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nous Contacter</h2>
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="text-center">
-                        <p class="text-lg font-medium">Contact direct</p>
-                        <p class="text-gray-600 mt-2">Email: contact@agence.com</p>
-                        <p class="text-gray-600">Téléphone: +33 1 23 45 67 89</p>
-                        <p class="text-gray-600 mt-4">Adresse: 123 Rue de l'Architecture, 75000 Paris</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nous Contacter</h2>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="text-center">
+                        <p class="text-lg font-medium">Contact direct</p>
+                        <p class="text-gray-600 mt-2">Email: contact@agence.com</p>
+                        <p class="text-gray-600">Téléphone: +33 1 23 45 67 89</p>
+                        <p class="text-gray-600 mt-4">Adresse: 123 Rue de l'Architecture, 75000 Paris</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <footer class="bg-gray-900 text-white py-6 mt-12" role="contentinfo">
-        <div class="container mx-auto text-center text-sm">
-            <p>&copy; 2024 Agence d'Architecture. Tous droits réservés.</p>
-        </div>
-    </footer>
+    <footer class="bg-gray-900 text-white py-6 mt-12" role="contentinfo">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2024 Agence d'Architecture. Tous droits réservés.</p>
+        </div>
+    </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
