@@ -1,0 +1,61 @@
+/* Police Montserrat pour correspondre au logo */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff; /* Fond blanc pour toutes les pages */
+    color: #333;
+    scroll-behavior: smooth;
+}
+.nav-link.active {
+    font-weight: 600;
+    border-bottom: 2px solid #000;
+}
+.filter-btn.active {
+    background-color: #d1d5db; /* Un gris plus foncé pour le bouton actif */
+    font-weight: 600;
+}
+/* Styles pour le carrousel */
+.carousel-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 1rem;
+    height: 600px;
+}
+.carousel-wrapper {
+    display: flex;
+    height: 100%;
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    /* Masque la barre de défilement */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.carousel-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.carousel-item {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+}
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.carousel-nav-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
